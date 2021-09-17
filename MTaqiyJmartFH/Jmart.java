@@ -16,35 +16,52 @@ public class Jmart
        return "oop";
    }
    public static float getDiscountPercentage(int before, int after) {
+       float floatBefore = before;
+       float floatAfter = after;
+       
        if (before < after) {
-           return 0;
+           return 0.0f;
        }
        else {
-           return (float) (before-after/before) * 100;
+           return ((floatBefore - floatAfter) / floatBefore) * 100.0f;
        }
    }
    public static int getDiscountedPrice(int price, float discountPercentage) {
-       discountPercentage = getDiscountPercentage(  000, 900);
-       if (discountPercentage > 100.0) {
+       float floatPrice = price;
+       
+       if (discountPercentage > 100.0f) {
            return price = 0;
        }
        else {
-           return price = price - (price * (int) discountPercentage);
+           float discountedPrice = floatPrice - (floatPrice * discountPercentage / 100);
+           return (int) discountedPrice;
        }
    }
    public static int getOriginalPrice(int discountedPrice, float discountPercentage) {
-       return 0;
+       float originalPrice = (100.0f/(100.0f - discountPercentage)) * (float) discountedPrice;
+       return (int) originalPrice;
+       
    }
    public static float getCommissionMultiplier() {
-       return (float) 0.05;
+       return 0.05f;
    }
    public static int getAdjustedPrice(int price) {
-       return 0;
+       float adjustedPrice = (float) price + ((float) price *getCommissionMultiplier());
+       return (int) adjustedPrice;
+       
    }
    public static int getAdminFee(int price) {
-       return 0;
+       float adminFee = (float) price * getCommissionMultiplier();
+       return (int) adminFee;
    }
    public static void main(String[] args) {
-       
+       System.out.println(getPromo());
+       System.out.println(getCustomer());
+       System.out.println(getDiscountPercentage(1000,900));
+       System.out.println(getDiscountedPrice(1000,90.0f));
+       System.out.println(getOriginalPrice(1000,0));
+       System.out.println(getCommissionMultiplier());
+       System.out.println(getAdjustedPrice(0));
+       System.out.println(getAdminFee(500));
    }
 }
