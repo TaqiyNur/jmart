@@ -12,9 +12,11 @@ public class Jmart
    public static int getPromo() {
        return 0;
    }
+   
    public static String getCustomer() {
        return "oop";
    }
+   
    public static float getDiscountPercentage(int before, int after) {
        float floatBefore = before;
        float floatAfter = after;
@@ -26,6 +28,7 @@ public class Jmart
            return ((floatBefore - floatAfter) / floatBefore) * 100.0f;
        }
    }
+   
    public static int getDiscountedPrice(int price, float discountPercentage) {
        float floatPrice = price;
        
@@ -37,23 +40,32 @@ public class Jmart
            return (int) discountedPrice;
        }
    }
+   
    public static int getOriginalPrice(int discountedPrice, float discountPercentage) {
        float originalPrice = (100.0f/(100.0f - discountPercentage)) * (float) discountedPrice;
        return (int) originalPrice;
        
    }
+   
    public static float getCommissionMultiplier() {
        return 0.05f;
    }
+   
    public static int getAdjustedPrice(int price) {
        float adjustedPrice = (float) price + ((float) price *getCommissionMultiplier());
        return (int) adjustedPrice;
        
    }
+   
    public static int getAdminFee(int price) {
        float adminFee = (float) price * getCommissionMultiplier();
        return (int) adminFee;
    }
+   
+   public static Product create() {
+       return null;
+   }
+   
    public static void main(String[] args) {
        System.out.println(getPromo());
        System.out.println(getCustomer());
