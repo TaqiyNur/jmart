@@ -66,6 +66,17 @@ public class Jmart
        return null;
    }
    
+   public Product createProduct() {
+       return null;
+   }
+   
+   public Coupon createCoupun() {
+       return null;
+   }
+   
+   public ShipmentDuration createShipmentDuration() {
+       return null;
+   }
    public static void main(String[] args) {
        System.out.println(getPromo());
        System.out.println(getCustomer());
@@ -76,4 +87,6 @@ public class Jmart
        System.out.println(getAdjustedPrice(0));
        System.out.println(getAdminFee(500));
    }
+   
+   
 }

@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=ShipmentDuration
+comment0.text=\r\n\ \r\n\r\n\ @author\ \ Muhammad\ Taqiy\ Nur\ Furqon\r\n\ @NPM\ \ \ \ \ 2006468900\r\n
+comment1.params=bit
+comment1.target=ShipmentDuration(int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ ShipmentDuration\r\n
+comment2.params=reference
+comment2.target=boolean\ isDuration(ShipmentDuration)
+comment2.text=public\ ShipmentDuration(ShipmentDuration...\ args)\ {\r\n\ \ \ \ \ \ \ \ return\ ;\r\n}
+numComments=3
