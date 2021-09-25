@@ -14,16 +14,19 @@ public class ProductRating
     private long count;
     
     public ProductRating() {
-        total = 0;
-        count = 0;
+        this.total = 0;
+        this.count = 0;
     }
     
     public void insert(int rating) {
-        total = total + rating;
-        count++;
+        this.total = total + rating;
+        this.count++;
     }
     
     public double getAverage() {
+        if(count == 0) {
+            return 0.0;
+        }
         return (double) (total / count);
     }
     

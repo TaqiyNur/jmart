@@ -63,19 +63,25 @@ public class Jmart
    }
    
    public static Product create() {
-       return null;
+       PriceTag price = new PriceTag(100000.0);
+       Product product = new Product("Sepatu Aero", 1, true, price, ProductCategory.FASHION);
+       return product;
    }
    
    public Product createProduct() {
-       return null;
+       PriceTag price = new PriceTag(120000.0);
+       Product product = new Product("Baju", 1, false, price, ProductCategory.FASHION);
+       return product;
    }
    
    public Coupon createCoupun() {
-       return null;
+       Coupon coupon = new Coupon("Kupon", 559910, Coupon.Type.DISCOUNT, 10, 20000.0);
+       return coupon;
    }
    
    public ShipmentDuration createShipmentDuration() {
-       return null;
+       ShipmentDuration shipmentDuration = new ShipmentDuration();
+       return shipmentDuration;
    }
    public static void main(String[] args) {
        System.out.println(getPromo());

@@ -20,17 +20,25 @@ public class ShipmentDuration
     /**
      * Constructor for objects of class ShipmentDuration
      */
-    private ShipmentDuration(int bit)
-    {
+    private ShipmentDuration(int bit) {
         // initialise instance variables
         this.bit = bit;
     }
 
-    /*public ShipmentDuration(ShipmentDuration... args) {
-        return ;
-    }*/
+    public ShipmentDuration(ShipmentDuration... args) {
+        int temp = 0;
+        for (ShipmentDuration s: args) {
+            temp = temp | s.bit;
+        }
+        
+        this.bit = temp;
+    }
     
     public boolean isDuration(ShipmentDuration reference) {
+        int temp = this.bit;
+        if((reference.bit & temp) == reference.bit) {
+            return true;
+        }
         return false;
     }
 }

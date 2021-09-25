@@ -20,8 +20,7 @@ public class Coupon
     /**
      * Constructor for objects of class Coupon
      */
-    public Coupon(String name, int code, Type type, double cut, double minimum)
-    {
+    public Coupon(String name, int code, Type type, double cut, double minimum) {
         // initialise instance variables
         this.name = name;
         this.type = type;
@@ -35,16 +34,19 @@ public class Coupon
     }
     
     public boolean canApply(PriceTag priceTag) {
-        /*if (PriceTag.getAjustedPrice() >= minimum && used == false) {
+        if ((priceTag.getAdjustedPrice() > minimum) && !used) {
             return true;
         }
         else
             return false;
-        */
-        return true;
     }
     
-    public double apply(PriceTag priceTag) {
-        return 0.0;
+    public boolean apply(PriceTag priceTag) {
+        used = true;
+        return used;
+    }
+    
+    public enum Type {
+        DISCOUNT, REBATE
     }
 }

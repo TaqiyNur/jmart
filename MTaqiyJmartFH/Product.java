@@ -11,7 +11,7 @@ public class Product
 {
     private static int idCounter;
     public int id;
-    public String[] name;
+    public String name;
     public int weight;
     public boolean conditionUsed;
     public PriceTag priceTag;
@@ -21,13 +21,13 @@ public class Product
     /**
      * Constructor for objects of class ProductRating
      */
-    public Product(String[] name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category) {
-        name = name;
-        weight = weight;
-        conditionUsed = conditionUsed;
-        priceTag = priceTag;
-        category = category;
+    public Product(String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category) {
+        this.name = name;
+        this.weight = weight;
+        this.conditionUsed = conditionUsed;
+        this.priceTag = priceTag;
+        this.category = category;
         rating = new ProductRating();
-        id = idCounter;
+        this.id = ++idCounter;
     }
 }

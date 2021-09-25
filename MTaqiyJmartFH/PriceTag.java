@@ -21,14 +21,14 @@ public class PriceTag
      */
     public PriceTag(double price) {
         // initialise instance variables
-        price = price;
-        discount = 0.0;
+        this.price = price;
+        this.discount = 0.0;
     }
     
     public PriceTag(double price, double discount) {
         //initialise instance variables
-        price = price;
-        discount = discount;
+        this.price = price;
+        this.discount = discount;
     }
     
     public double getAdjustedPrice() {
@@ -44,7 +44,7 @@ public class PriceTag
         }
     }
     
-    public double getDiscountedPrice() {
+    private double getDiscountedPrice() {
         if(discount >= 100.0)
         {
             return 0.0;
