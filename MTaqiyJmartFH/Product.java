@@ -7,7 +7,7 @@ package MTaqiyJmartFH;
  * @author  Muhammad Taqiy Nur Furqon
  * @NPM     2006468900
  */
-public class Product
+public class Product 
 {
     private static int idCounter;
     public int id;
