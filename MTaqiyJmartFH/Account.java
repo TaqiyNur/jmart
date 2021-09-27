@@ -32,4 +32,7 @@ public class Account extends Recognizable implements FileParser
     public Object newInstance(String string) {
         return null;
     }
+    
 }
+
+

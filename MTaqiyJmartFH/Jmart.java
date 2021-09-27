@@ -79,10 +79,11 @@ public class Jmart
        return coupon;
    }
    
-   public ShipmentDuration createShipmentDuration() {
+   /*public ShipmentDuration createShipmentDuration() {
        ShipmentDuration shipmentDuration = new ShipmentDuration();
        return shipmentDuration;
-   }
+   }*/ 
+
    public static void main(String[] args) {
        System.out.println(getPromo());
        System.out.println(getCustomer());

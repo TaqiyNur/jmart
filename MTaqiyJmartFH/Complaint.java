@@ -1,4 +1,5 @@
 package MTaqiyJmartFH;
+import java.time.Duration;
 
 
 /**
@@ -7,27 +8,36 @@ package MTaqiyJmartFH;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Complaint
+public class Complaint extends Recognizable implements FileParser
 {
    public int productId;
-   public ShipmentDuration shipmentDuration;
-   
+   public Duration duration;
+   public String desc;
+   public String date;
    
    /*public Complaint(int id, int buyerId, int storeId, int paymentId, String desc) {
-       super(id);
-       this.buyerId = buyerId;
-       this.storeId = storeId;
+       super(id, payment.buyerId, payment.storeId);
+       this.desc = desc;
+   }*/
+   
+   /*public Complaint(int id, int buyerId, int storeId, int paymentId, String desc) {
+       super(id, buyerId, storeId);
        this.paymentId = paymentId;
        this.desc = desc;
    }*/
+   
+   public Complaint(int id, String desc) {
+       super(id);
+       this.desc = desc;
+   }
    
    public boolean validate() {
        return false;
    }
    
-   public Transaction perform() {
+   /*public Transaction perform() {
        return null;
-   }
+   }*/
    
    public boolean read(String string) {
        return false;
