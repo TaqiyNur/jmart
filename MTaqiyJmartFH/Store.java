@@ -20,23 +20,19 @@ public class Store extends Recognizable implements FileParser
         this.phoneNumber = phoneNumber;
     }
     
-    /*public Store (Account account, String name, String address, String phoneNumber) {
-        
-        account = account;
+    public Store (Account account, String name, String address, String phoneNumber) {
+        super(account.id);
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
-    }*/
+    }
     
     public boolean read(String string) {
         return false;
     }
     
-    public Object write() {
-        return null;
-    }
-    
-    public Object newInstance(String string) {
-        return null;
+    public String toString(){
+        return "name: " + this.name + "\n" + "address: " + this.address + "\n" +
+        "phoneNumber: " + "this.powerNumber";
     }
 }

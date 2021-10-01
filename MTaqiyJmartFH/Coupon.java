@@ -7,26 +7,28 @@ package MTaqiyJmartFH;
  * @author  Muhammad Taqiy Nur Furqon
  * @NPM     2006468900
  */
-public class Coupon
+public class Coupon extends Recognizable
 {
     // instance variables - replace the example below with your own
-    public String name;
-    public int code;
-    public double cut;
-    public Type type;
-    public double minimum;
+    public final String name;
+    public final int code;
+    public final double cut;
+    public final Type type;
+    public final double minimum;
     private boolean used;
 
     /**
      * Constructor for objects of class Coupon
      */
-    public Coupon(String name, int code, Type type, double cut, double minimum) {
+    public Coupon(int id, String name, int code, Type type, double cut, double minimum) {
         // initialise instance variables
+        super(id);
         this.name = name;
+        this.code = code;
         this.type = type;
         this.cut = cut;
         this.minimum = minimum;
-        this.used = false;
+        used = false;
     }
 
     public boolean isUsed() {
@@ -37,13 +39,17 @@ public class Coupon
         if ((priceTag.getAdjustedPrice() > minimum) && !used) {
             return true;
         }
-        else
-            return false;
+            
+        return false;
     }
     
-    public boolean apply(PriceTag priceTag) {
+    public double apply(PriceTag priceTag) {
         used = true;
-        return used;
+        if(type == Type.DISCOUNT) {
+            return (priceTag.getAdjustedPrice() - ((100 - cut) / 100));
+        }
+        
+        return (priceTag.getAdjustedPrice() - cut);
     }
     
     public enum Type {

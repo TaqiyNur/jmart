@@ -4,12 +4,10 @@ comment0.text=\r\n\ Write\ a\ description\ of\ class\ Jmart\ here.\r\n\r\n\ @aut
 comment1.params=
 comment1.target=int\ getPromo()
 comment10.params=
-comment10.target=Product\ createProduct()
-comment11.params=
-comment11.target=Coupon\ createCoupun()
-comment12.params=args
-comment12.target=void\ main(java.lang.String[])
-comment12.text=public\ ShipmentDuration\ createShipmentDuration()\ {\r\n\ \ \ \ \ \ \ ShipmentDuration\ shipmentDuration\ \=\ new\ ShipmentDuration();\r\n\ \ \ \ \ \ \ return\ shipmentDuration;\r\n}
+comment10.target=Coupon\ createCoupun()
+comment11.params=args
+comment11.target=void\ main(java.lang.String[])
+comment11.text=public\ static\ Shipment\ createShipment()\ {\r\n\ \ \ \ \ \ \ Shipment.Duration\ duration\ \=\ new\ Shipment.Duration(Shipment.);\r\n\ \ \ \ \ \ \ Shipment\ shipment\ \=\ new\ Shipment("MyAddress",\ 90000,\ duration,\ "Your\ Receipt");\r\n\ \ \ \ \ \ \ return\ shipment;\r\n}
 comment2.params=
 comment2.target=java.lang.String\ getCustomer()
 comment3.params=before\ after
@@ -26,4 +24,4 @@ comment8.params=price
 comment8.target=int\ getAdminFee(int)
 comment9.params=
 comment9.target=Product\ create()
-numComments=13
+numComments=12

@@ -44,13 +44,5 @@ public abstract class Invoice extends Recognizable implements FileParser
         return false;
     }
     
-    public Object write() {
-        return null;
-    }
-    
-    public Object newInstance(String string) {
-        return null;
-    }
-    
     public abstract double getTotalPay();
 }

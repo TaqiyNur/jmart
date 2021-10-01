@@ -63,26 +63,22 @@ public class Jmart
    }
    
    public static Product create() {
+       Shipment.MultiDuration multiDuration = new Shipment.MultiDuration();
        PriceTag price = new PriceTag(100000.0);
-       Product product = new Product("Sepatu Aero", 1, true, price, ProductCategory.FASHION);
+       Product product = new Product(01, 5, "Sepatu Aero", 1, true, price, ProductCategory.FASHION, multiDuration);
        return product;
    }
    
-   public Product createProduct() {
-       PriceTag price = new PriceTag(120000.0);
-       Product product = new Product("Baju", 1, false, price, ProductCategory.FASHION);
-       return product;
-   }
-   
-   public Coupon createCoupun() {
-       Coupon coupon = new Coupon("Kupon", 559910, Coupon.Type.DISCOUNT, 10, 20000.0);
+   public static Coupon createCoupun() {
+       Coupon coupon = new Coupon(2, "Kupon", 559910, Coupon.Type.DISCOUNT, 10, 20000.0);
        return coupon;
    }
    
-   /*public ShipmentDuration createShipmentDuration() {
-       ShipmentDuration shipmentDuration = new ShipmentDuration();
-       return shipmentDuration;
-   }*/ 
+   /*public static Shipment createShipment() {
+       Shipment.Duration duration = new Shipment.Duration(Shipment.);
+       Shipment shipment = new Shipment("MyAddress", 90000, duration, "Your Receipt");
+       return shipment;
+   }*/
 
    public static void main(String[] args) {
        System.out.println(getPromo());
@@ -93,7 +89,8 @@ public class Jmart
        System.out.println(getCommissionMultiplier());
        System.out.println(getAdjustedPrice(0));
        System.out.println(getAdminFee(500));
+       
+       create();
    }
-   
    
 }

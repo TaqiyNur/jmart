@@ -10,6 +10,6 @@ package MTaqiyJmartFH;
 public interface FileParser
 {
     boolean read(String string);
-    Object  write();
-    Object newInstance(String string);
+    default Object  write(){return null;};
+    default Object newInstance(String string){return null;};
 }
