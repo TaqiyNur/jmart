@@ -19,6 +19,6 @@ public class Filter
     }
     
     public static void filterProductRating (ArrayList<ProductRating> list, double value, boolean less) {
-    
+        
     }
 }
