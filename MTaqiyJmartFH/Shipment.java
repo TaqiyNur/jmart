@@ -1,12 +1,8 @@
 package MTaqiyJmartFH;
+import java.util.Calendar;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
-
-/**
- * Write a description of class Shipment here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Shipment implements FileParser
 {
     public String address;
@@ -23,6 +19,7 @@ public class Shipment implements FileParser
     
     public static class Duration {
         // instance variables - replace the example below with your own
+        public static final SimpleDateFormat ESTIMATION_FORMAT = new SimpleDateFormat("dd-M-yyyy");
         public static final Duration INSTANT = new Duration((byte)(1 << 0));
         public static final Duration SAME_DAY = new Duration((byte)(1 << 1));
         public static final Duration NEXT_DAY = new Duration((byte)(1 << 2));
@@ -38,7 +35,28 @@ public class Shipment implements FileParser
             this.bit = bit;
         }
 
-        
+        public String getEstimatedArrival (Date reference) {
+            Calendar cal = Calendar.getInstance();
+            
+            if(this.bit == 1 << 0 || this.bit == 1 << 1) {
+                return ESTIMATION_FORMAT.format(reference.getTime());
+            }
+            else if (this.bit == 1 << 2) {
+                cal.setTime(reference);
+                cal.add(Calendar.DATE, 1);
+                return ESTIMATION_FORMAT.format(cal);
+            }
+            else if(this.bit == 1 << 3) {
+                cal.setTime(reference);
+                cal.add(Calendar.DATE, 2);
+                return ESTIMATION_FORMAT.format(cal);
+            } 
+            else {
+                cal.setTime(reference);
+                cal.add(Calendar.DATE, 5);
+                return ESTIMATION_FORMAT.format(cal);
+            }
+        }
     }
     
     public static class MultiDuration {

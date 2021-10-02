@@ -1,22 +1,19 @@
 package MTaqiyJmartFH;
 import java.time.Duration;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-
-/**
- * Write a description of class Complaint here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Complaint extends Recognizable implements FileParser
 {
+   SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
    public String desc;
    public String date;
    
    public Complaint(int id, String desc) {
        super(id);
        this.desc = desc;
-       this.date = "10/11/02";
+       this.date = sdf.format(new Date());
    }
    
    public boolean validate() {
