@@ -44,17 +44,17 @@ public class Shipment implements FileParser
             else if (this.bit == 1 << 2) {
                 cal.setTime(reference);
                 cal.add(Calendar.DATE, 1);
-                return ESTIMATION_FORMAT.format(cal);
+                return ESTIMATION_FORMAT.format(reference.getTime());
             }
             else if(this.bit == 1 << 3) {
                 cal.setTime(reference);
                 cal.add(Calendar.DATE, 2);
-                return ESTIMATION_FORMAT.format(cal);
+                return ESTIMATION_FORMAT.format(reference.getTime());
             } 
             else {
                 cal.setTime(reference);
                 cal.add(Calendar.DATE, 5);
-                return ESTIMATION_FORMAT.format(cal);
+                return ESTIMATION_FORMAT.format(reference.getTime());
             }
         }
     }

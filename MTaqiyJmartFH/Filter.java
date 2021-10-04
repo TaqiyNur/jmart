@@ -1,11 +1,9 @@
 package MTaqiyJmartFH;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
- * Write a description of class Filter here.
+ * Kelas ini memfilter PriceTag dan ProductRating
  *
- * @author (your name)
- * @version (a version number or a date)
  */
 public class Filter
 {

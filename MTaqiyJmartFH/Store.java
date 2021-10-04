@@ -4,8 +4,8 @@ import java.util.regex.Pattern;
 
 public class Store extends Recognizable implements FileParser
 {
-    public static final String REGEX_PHONE = "0";
-    public static final String REGEX_NAME = "A";
+    public static final String REGEX_PHONE = "^([0-9]){9,12}$";
+    public static final String REGEX_NAME = "^([A-Za-z]{4-20})$";
     public String name;
     public String address;
     public String phoneNumber;
@@ -34,10 +34,17 @@ public class Store extends Recognizable implements FileParser
     }
     
     public boolean validate() {
-        if(String.valueOf(REGEX_NAME).length() >= 9 && 
-        String.valueOf(REGEX_NAME).length() <= 12 && 
-        String.valueOf(REGEX_PHONE).length() >= 4 &&
-        String.valueOf(REGEX_PHONE).length() <= 20) {
+        Pattern patternPhone = Pattern.compile(REGEX_PHONE);
+        Matcher matcherPhone = patternPhone.matcher(phoneNumber);
+        Pattern patternName = Pattern.compile(REGEX_NAME);
+        Matcher matcherName = patternName.matcher(name);
+        
+        boolean matchFoundPhone = matcherPhone.find();
+        boolean validasiPhone = matchFoundPhone ? true : false;
+        boolean matchFoundName = matcherName.find();
+        boolean validasiName = matchFoundPhone ? true : false;
+        
+        if(validasiPhone && validasiName){
             return true;
         }
         return false;
