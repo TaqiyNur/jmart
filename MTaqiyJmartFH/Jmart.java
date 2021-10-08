@@ -89,7 +89,7 @@ public class Jmart
        System.out.println(getCommissionMultiplier());
        System.out.println(getAdjustedPrice(0));
        System.out.println(getAdminFee(500));
-       
+       System.out.println("Hello from Eclipse!");
        create();
    }
    
