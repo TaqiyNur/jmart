@@ -31,21 +31,20 @@ public class Account extends Recognizable implements FileParser
     }
     
     public boolean validate() {
-        Pattern patternEmail = Pattern.compile(REGEX_EMAIL);
+    	Pattern patternEmail = Pattern.compile(REGEX_EMAIL);
         Matcher matcherEmail = patternEmail.matcher(email);
+        boolean matchFoundEmail = matcherEmail.find();
+        boolean emailResult = matchFoundEmail ? true : false;
+        
         Pattern patternPassword = Pattern.compile(REGEX_PASSWORD);
         Matcher matcherPassword = patternPassword.matcher(password);
-        
-        boolean matchFoundEmail = matcherEmail.find();
-        boolean validasiEmail = matchFoundEmail ? true : false;
         boolean matchFoundPassword = matcherPassword.find();
-        boolean validasiPassword = matchFoundPassword ? true : false;
+        boolean passwordResult = matchFoundPassword ? true : false;
         
-        if(validasiEmail && validasiPassword){
+        if(emailResult && passwordResult){
             return true;
         }
         return false;
-        
     }
 }
 

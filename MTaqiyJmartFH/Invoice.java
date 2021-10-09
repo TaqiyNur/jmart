@@ -1,6 +1,6 @@
 package MTaqiyJmartFH;
-import java.util.Calendar;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -44,7 +44,8 @@ public abstract class Invoice extends Recognizable implements FileParser
         super(id);
         this.buyerId = buyerId;
         this.productId = productId;
-        this.date = "date";
+        SimpleDateFormat sdf = new SimpleDateFormat("E, MM/dd/yyyy");
+        this.date = sdf.format(new Date());
         this.rating = Rating.NONE;
         this.status = Status.WAITING_CONFIRMATION;
     }

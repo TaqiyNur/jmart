@@ -34,17 +34,17 @@ public class Store extends Recognizable implements FileParser
     }
     
     public boolean validate() {
+    	Pattern patternName = Pattern.compile(REGEX_NAME);
+        Matcher matcherName = patternName.matcher(name);
+        boolean matchFoundName = matcherName.find();
+        boolean nameResult = matchFoundName ? true : false;
+        
         Pattern patternPhone = Pattern.compile(REGEX_PHONE);
         Matcher matcherPhone = patternPhone.matcher(phoneNumber);
-        Pattern patternName = Pattern.compile(REGEX_NAME);
-        Matcher matcherName = patternName.matcher(name);
-        
         boolean matchFoundPhone = matcherPhone.find();
-        boolean validasiPhone = matchFoundPhone ? true : false;
-        boolean matchFoundName = matcherName.find();
-        boolean validasiName = matchFoundPhone ? true : false;
+        boolean phoneResult = matchFoundPhone ? true : false;
         
-        if(validasiPhone && validasiName){
+        if(nameResult && phoneResult){
             return true;
         }
         return false;

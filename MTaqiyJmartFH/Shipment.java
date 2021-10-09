@@ -19,7 +19,7 @@ public class Shipment implements FileParser
     
     public static class Duration {
         // instance variables - replace the example below with your own
-        public static final SimpleDateFormat ESTIMATION_FORMAT = new SimpleDateFormat("dd-M-yyyy");
+        public static final SimpleDateFormat ESTIMATION_FORMAT = new SimpleDateFormat("E MMMMM dd yyyy");
         public static final Duration INSTANT = new Duration((byte)(1 << 0));
         public static final Duration SAME_DAY = new Duration((byte)(1 << 1));
         public static final Duration NEXT_DAY = new Duration((byte)(1 << 2));
