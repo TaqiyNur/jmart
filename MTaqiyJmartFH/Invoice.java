@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public abstract class Invoice extends Recognizable implements FileParser
+public abstract class Invoice extends Recognizable 
 {
     public static enum Rating {
         NONE, BAD, NEUTRAL, GOOD
@@ -40,18 +40,13 @@ public abstract class Invoice extends Recognizable implements FileParser
     public Status status;
     public ArrayList<Record> history = new ArrayList<>();
     
-    protected Invoice(int id, int buyerId, int productId) {
-        super(id);
+    protected Invoice(int buyerId, int productId) {
         this.buyerId = buyerId;
         this.productId = productId;
         SimpleDateFormat sdf = new SimpleDateFormat("E, MM/dd/yyyy");
         this.date = sdf.format(new Date());
         this.rating = Rating.NONE;
         this.status = Status.WAITING_CONFIRMATION;
-    }
-    
-    public boolean read(String string) {
-        return false;
     }
     
     public abstract double getTotalPay();

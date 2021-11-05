@@ -6,28 +6,21 @@ import java.util.regex.Matcher;
  * Kelas ini mendeskripsikan Akun pengguna
  *
  */
-public class Account extends Recognizable implements FileParser
+public class Account extends Recognizable
 {
     public static final String REGEX_EMAIL =  "^\\w+([\\&_*~.]?\\w+)*@\\w+([\\.-]?\\w+)*.?\\w+$";
     public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d][^-\\s]{8,}$";
     public String name;
     public String email;
     public String password;
+    public double balance;
+    public Store store;
     
-    public Account(int id, String name, String email, String password){
-        super(id);
+    public Account(String name, String email, String password, double balance){
         this.name  = name;
         this.email = email;
         this.password = password;
-    }
-    
-    public boolean read(String string) {
-        return false;
-    }
-
-    public String toString() {
-        return "name: " + this.name + "\n" + "email: " + this.email + "\n" +
-        "password: " + this.password;
+        this.balance = balance;
     }
     
     public boolean validate() {

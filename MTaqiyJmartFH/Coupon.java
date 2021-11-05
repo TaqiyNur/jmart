@@ -9,6 +9,10 @@ package MTaqiyJmartFH;
  */
 public class Coupon extends Recognizable
 {
+	public enum Type {
+        DISCOUNT, REBATE
+    }
+	
     // instance variables - replace the example below with your own
     public final String name;
     public final int code;
@@ -20,9 +24,7 @@ public class Coupon extends Recognizable
     /**
      * Constructor for objects of class Coupon
      */
-    public Coupon(int id, String name, int code, Type type, double cut, double minimum) {
-        // initialise instance variables
-        super(id);
+    public Coupon(String name, int code, Type type, double cut, double minimum) {
         this.name = name;
         this.code = code;
         this.type = type;
@@ -35,24 +37,20 @@ public class Coupon extends Recognizable
         return used;
     }
     
-    public boolean canApply(PriceTag priceTag) {
-        if ((priceTag.getAdjustedPrice() > minimum) && !used) {
+    public boolean canApply(double price, double discount) {
+        if ((Treasury.getAdjustedPrice(price, discount) > minimum) && !used) {
             return true;
         }
             
         return false;
     }
     
-    public double apply(PriceTag priceTag) {
+    public double apply(double price, double discount) {
         used = true;
         if(type == Type.DISCOUNT) {
-            return (priceTag.getAdjustedPrice() - ((100 - cut) / 100));
+            return (Treasury.getAdjustedPrice(price, discount) - ((100 - cut) / 100));
         }
         
-        return (priceTag.getAdjustedPrice() - cut);
-    }
-    
-    public enum Type {
-        DISCOUNT, REBATE
+        return (Treasury.getAdjustedPrice(price, discount) - cut);
     }
 }
