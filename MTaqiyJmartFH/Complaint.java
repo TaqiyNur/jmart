@@ -2,7 +2,7 @@ package MTaqiyJmartFH;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Complaint extends Recognizable
+public class Complaint extends Seriazable
 {
    public Date date;
    public String desc;
