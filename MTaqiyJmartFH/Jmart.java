@@ -3,13 +3,9 @@ package MTaqiyJmartFH;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.*;
-import java.io.File;
-import java.util.*;
 import java.lang.reflect.Type;
 import com.google.gson.reflect.TypeToken;
 
@@ -59,73 +55,48 @@ public class Jmart
 	}
 	
 	public static List<Product> filterByAccountId(List<Product> list, int accountId, int page, int pageSize) {
-		List<Product> accList = new ArrayList<Product>();
-
-		for (Product prod : list) {
-			if (accountId == prod.accountId) {
-				accList.add(prod);
-			}
-		}
-
-		return paginate(accList, page, pageSize, (e) -> e.accountId == accountId) ;
+		return paginate(list, page, pageSize, product -> product.accountId == accountId);
 	}
 	
 	public static List<Product> filterByName(List<Product> list, String search, int page, int pageSize) {
-		 List<Product> nameList = new ArrayList<>();
-	        
-	        for (Product product : list) {
-	            if (product.name.toLowerCase().contains(search.toLowerCase())) {
-	                nameList.add(product);
-	            }
-	        }
-	        return paginate(nameList, page, pageSize, (e) -> e.name == search);
+		 return paginate(list, page, pageSize, product -> product.name.toLowerCase().contains(search.toLowerCase()));
 	}
 	
 	private static List<Product> paginate(List<Product> list, int page, int pageSize, Predicate<Product> pred) {
-		if (page <= 0 || pageSize <= 0) {
-			throw new IllegalArgumentException("Invalid Input!");
-		}
+		List<Product> resultList = new ArrayList<>(pageSize);
+		int startingIndex = (page) * pageSize;
+		int iteration = 0;
+		int occurences = 0;
 
-		List<Product> pagList = new ArrayList<>();
-
-		for (Product product : list) {
-			if (pred.predicate(product) == true) {
-				pagList.add(product);
+		for (; iteration < list.size() && occurences < startingIndex; ++iteration) {
+			if (pred.predicate(list.get(iteration))) {
+				++occurences;
 			}
 		}
 
-		int index = (page - 1) * pageSize;
-		
-		if (pagList == null || pagList.size() <= index) {
-			return Collections.emptyList();
+		for (int i = iteration; i < list.size() && resultList.size() < pageSize; ++i) {
+			if (pred.predicate(list.get(i))) {
+				resultList.add(list.get(i));
+			}
 		}
-		
-		int floorPage = Math.min(index + pageSize, pagList.size());
-		
-		return pagList.subList(index, floorPage);
+
+		return resultList;
 	}
 	
    public static void main(String[] args){
-	   /*System.out.println("account id: " + new Account(null, null, null, -1).id);
-	   System.out.println("account id: " + new Account(null, null, null, -1).id);
-	   System.out.println("account id: " + new Account(null, null, null, -1).id);
 	   
-	   System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
-	   System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
-	   System.out.println("payment id: " + new Payment(-1, -1, -1, null).id);
-	   */
-	   
-	   try {
-		List<Product> list = read("C:\\Users\\mtaqi\\Documents\\Praktikum OOP\\jmart\\randomProductList.json");
-		List<Product> filteredName = filterByName(list, "GTX", 1, 5);
-		List<Product> filteredPrice = filterByPrice(list, 0.0, 20000.0);
-		filteredPrice.forEach(product -> System.out.println(product.price));
-		System.out.println("\n\n");
-		filteredName.forEach(product -> System.out.println(product.name));
-	   } catch (FileNotFoundException e) {
-		e.printStackTrace();
-	   }
-	   
-   }
+		try {
+			String filepath = "C:\\Users\\mtaqi\\Documents\\Praktikum OOP\\jmart\\account.json";
+			JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
+			tableAccount.add(new Account("name", "email", "password"));
+			tableAccount.writeJson();
+			
+			tableAccount = new JsonTable<>(Account.class,filepath);
+			tableAccount.forEach(account -> System.out.println(account.toString()));
+		} catch (Throwable t) {
+			t.printStackTrace();
+		}
+		
+	}
    
 }
