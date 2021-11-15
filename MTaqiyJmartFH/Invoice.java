@@ -43,11 +43,12 @@ public abstract class Invoice extends Seriazable
     protected Invoice(int buyerId, int productId) {
         this.buyerId = buyerId;
         this.productId = productId;
+        this.complaintId = -1;
         SimpleDateFormat sdf = new SimpleDateFormat("E, MM/dd/yyyy");
         this.date = sdf.format(new Date());
         this.rating = Rating.NONE;
         this.status = Status.WAITING_CONFIRMATION;
     }
     
-    public abstract double getTotalPay();
+    public abstract double getTotalPay(Product product);
 }

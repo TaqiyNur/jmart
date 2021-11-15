@@ -1,5 +1,7 @@
 package MTaqiyJmartFH;
 
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Write a description of class Payment here.
@@ -9,6 +11,7 @@ package MTaqiyJmartFH;
  */
 public class Payment extends Invoice
 {
+	public ArrayList<Record> history;
     public int productCount;
     public Shipment shipment;
     
@@ -18,7 +21,19 @@ public class Payment extends Invoice
         this.shipment = shipment;
     }
     
-    public double getTotalPay() {
-        return 0.0;
+    public double getTotalPay(Product product) {
+    	return product.price + product.shipmentPlans;
+    }
+    
+    public static class Record {
+    	public final Date date;
+    	public String message;
+    	public Status status;
+    	
+    	public Record(Status status, String message) {
+    		this.date = new Date();
+			this.status = status;
+    		this.message = message;
+    	}
     }
 }

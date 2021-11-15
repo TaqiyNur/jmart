@@ -294,4 +294,16 @@ public class Algorithm {
     public static <T extends Comparable<?super T>> T min(T first, T second, Comparator<?super T> comparator){
         return null;
     }
+    
+    public static <T> List<T> paginate (T[] [] array, int page, int pageSize, Predicate<T> pred) {
+    	return null;
+    }
+    
+    public static <T> List<T> paginate (Iterable<T> iterable, int page, int pageSize, Predicate<T> pred) {
+    	return null;
+    }
+    
+    public static <T> List<T> paginate (Iterator<T> iterator, int page, int pageSize, Predicate<T> pred) {
+    	return null;
+    }
 }
