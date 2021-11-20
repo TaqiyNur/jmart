@@ -7,7 +7,7 @@ package com.MTaqiyJmartFH;
  * @author  Muhammad Taqiy Nur Furqon
  * @NPM     2006468900
  */
-public class Product extends Seriazable
+public class Product extends Serializable
 {
     public String name;
     public int weight;

@@ -1,6 +1,7 @@
 package com.MTaqiyJmartFH;
 
 import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Comparator;
@@ -295,7 +296,19 @@ public class Algorithm {
         return null;
     }
     
-    public static <T> List<T> paginate (T[] [] array, int page, int pageSize, Predicate<T> pred) {
+    public static <T> List<T> paginate (T[] [] list, int page, int pageSize, Predicate<T> pred) {
+		/*
+		 * List<Product> resultList = new ArrayList<>(pageSize); int startingIndex =
+		 * (page) * pageSize; int iteration = 0; int occurences = 0;
+		 * 
+		 * for (; iteration < list.length && occurences < startingIndex; ++iteration) {
+		 * if (pred.predicate(list.length)) { ++occurences; } }
+		 * 
+		 * for (int i = iteration; i < list.size() && resultList.size() < pageSize; ++i)
+		 * { if (pred.predicate(list.get(i))) { resultList.add(list.get(i)); } }
+		 * 
+		 * return resultList;
+		 */
     	return null;
     }
     

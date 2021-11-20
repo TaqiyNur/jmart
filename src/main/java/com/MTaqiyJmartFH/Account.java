@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
  * Kelas ini mendeskripsikan Akun pengguna
  *
  */
-public class Account extends Seriazable
+public class Account extends Serializable
 {
     public static final String REGEX_EMAIL =  "^\\w+([\\&_*~.]?\\w+)*@\\w+([\\.-]?\\w+)*.?\\w+$";
     public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d][^-\\s]{8,}$";

@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public abstract class Invoice extends Seriazable 
+public abstract class Invoice extends Serializable 
 {
     public static enum Rating {
         NONE, BAD, NEUTRAL, GOOD

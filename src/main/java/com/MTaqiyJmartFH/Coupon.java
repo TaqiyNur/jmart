@@ -7,7 +7,7 @@ package com.MTaqiyJmartFH;
  * @author  Muhammad Taqiy Nur Furqon
  * @NPM     2006468900
  */
-public class Coupon extends Seriazable
+public class Coupon extends Serializable
 {
 	public enum Type {
         DISCOUNT, REBATE
