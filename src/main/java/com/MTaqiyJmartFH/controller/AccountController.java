@@ -5,6 +5,8 @@ import com.MTaqiyJmartFH.JsonTable;
 import com.MTaqiyJmartFH.Store;
 import com.MTaqiyJmartFH.dbjson.JsonAutowired;
 import java.util.regex.Pattern;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +18,7 @@ public class AccountController implements BasicGetController<Account>{
     public static final Pattern REGEX_PATTERN_EMAIL = Pattern.compile(REGEX_EMAIL);
     public static final Pattern REGEX_PATTERN_PASSWORD = Pattern.compile(REGEX_PASSWORD);
     
-    @JsonAutowired(filepath = "C:\\Users\\mtaqi\\Documents\\Praktikum OOP\\jmart\\src", value = Account.class)
+    @JsonAutowired(filepath = "jmart\\src\\main\\resources\\JsonFiles\\account.json", value = Account.class)
 	public static JsonTable<Account> accountTable;
 	
     @Override
@@ -27,8 +29,29 @@ public class AccountController implements BasicGetController<Account>{
 	@PostMapping("/login")
 	public 
 	Account login(String email, String password) {
+		String generatedPassword = null;
+
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+
+			md.update(password.getBytes());
+
+			byte[] bytes = md.digest();
+
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < bytes.length; i++) {
+				sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+			}
+
+			generatedPassword = sb.toString();
+
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		for (Account account : getJsonTable()) {
-			if (account.email.equals(email) && account.password.equals(password)) {
+			if (account.email.equals(email) && account.password.equals(generatedPassword)) {
 				return account;
 			}
 		}
@@ -36,9 +59,11 @@ public class AccountController implements BasicGetController<Account>{
 	}
 	
 	@PostMapping("/register")
-	public 
-	Account register(String name, String email, String password) {
-		Account newAccount = new Account(name, email, password, 0.0);
+	public Account register(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
+
+		String generatedPassword = null;
+
+		Account newAccount = new Account(name, email, generatedPassword, 0.0);
 		if ((!name.isBlank())) {
 			if (REGEX_PATTERN_EMAIL.matcher(email).matches() && REGEX_PATTERN_PASSWORD.matcher(password).matches()) {
 				for (Account account : getJsonTable()) {
@@ -51,12 +76,33 @@ public class AccountController implements BasicGetController<Account>{
 				}
 			}
 		}
+		
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+
+			md.update(password.getBytes());
+
+			byte[] bytes = md.digest();
+
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < bytes.length; i++) {
+				sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+			}
+
+			generatedPassword = sb.toString();
+
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 	
 	@PostMapping("/store")
 	public
 	Store registerStore(int id, String name, String address, String phoneNumber) {
+		
 		for(Account acc : getJsonTable()) {
 			if(acc.id == id && acc.store == null) {
 				Store store = new Store(name, address, phoneNumber, 0.0);
@@ -65,11 +111,18 @@ public class AccountController implements BasicGetController<Account>{
 			}
 		}
 		return null;
+		
+		
 	}
 	
-	@PostMapping("/topup")
-	public
-	boolean topUp (int id, double balance) {
+	@PostMapping("/{id}/topUp")
+	boolean topUp(@RequestParam int id, @RequestParam double balance) {
+		for (Account each : accountTable) {
+			if (each.id == id) {
+				each.balance += balance;
+				return true;
+			}
+		}
 		return false;
 	}
 }

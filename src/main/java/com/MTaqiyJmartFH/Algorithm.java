@@ -296,27 +296,55 @@ public class Algorithm {
         return null;
     }
     
-    public static <T> List<T> paginate (T[] [] list, int page, int pageSize, Predicate<T> pred) {
-		/*
-		 * List<Product> resultList = new ArrayList<>(pageSize); int startingIndex =
-		 * (page) * pageSize; int iteration = 0; int occurences = 0;
-		 * 
-		 * for (; iteration < list.length && occurences < startingIndex; ++iteration) {
-		 * if (pred.predicate(list.length)) { ++occurences; } }
-		 * 
-		 * for (int i = iteration; i < list.size() && resultList.size() < pageSize; ++i)
-		 * { if (pred.predicate(list.get(i))) { resultList.add(list.get(i)); } }
-		 * 
-		 * return resultList;
-		 */
-    	return null;
-    }
-    
-    public static <T> List<T> paginate (Iterable<T> iterable, int page, int pageSize, Predicate<T> pred) {
-    	return null;
-    }
-    
-    public static <T> List<T> paginate (Iterator<T> iterator, int page, int pageSize, Predicate<T> pred) {
-    	return null;
-    }
+	public static <T> List<T> paginate(T[] array, int page, int pageSize, Predicate<T> pred) {
+		List<T> tempHasil = new ArrayList<T>();
+
+		if (pred.equals(true)) {
+			for (int i = ((array.length / pageSize) * page); i < ((array.length / pageSize) * page) + pageSize; i++) {
+				tempHasil.add(array[i]);
+			}
+		}
+		return tempHasil;
+	}
+
+	public static <T> List<T> paginate(Iterable<T> iterable, int page, int pageSize, Predicate<T> pred) {
+		List<T> tempHasil = new ArrayList<T>();
+		int iterableSize = 0;
+		for (Object i : iterable) {
+			iterableSize++;
+		}
+
+		int start = (iterableSize / pageSize) * page;
+		int finish = start + pageSize;
+		int counter = 0;
+
+		for (T each : iterable) {
+			if (counter >= start && counter < finish) {
+				tempHasil.add(each);
+			}
+			counter++;
+		}
+		return tempHasil;
+	}
+
+	public static <T> List<T> paginate(Iterator<T> iterator, int page, int pageSize, Predicate<T> pred) {
+		List<T> tempHasil = new ArrayList<T>();
+		int iteratorSize = 0;
+		while (iterator.hasNext()) {
+			iteratorSize++;
+			iterator.next();
+		}
+		int start = (iteratorSize / pageSize) * page;
+		int finish = start + pageSize;
+		int counter = 0;
+
+		while (iterator.hasNext()) {
+			if (counter >= start && counter < finish) {
+				T each = iterator.next();
+				tempHasil.add(each);
+			}
+			counter++;
+		}
+		return tempHasil;
+	}
 }
