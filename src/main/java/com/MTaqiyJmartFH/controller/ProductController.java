@@ -4,6 +4,8 @@ import com.MTaqiyJmartFH.JsonTable;
 import com.MTaqiyJmartFH.Product;
 import com.MTaqiyJmartFH.ProductCategory;
 import com.MTaqiyJmartFH.dbjson.JsonAutowired;
+import java.security.NoSuchAlgorithmException;
+
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,7 +31,7 @@ public class ProductController implements BasicGetController<Product>{
 		return null;
 	}
 	
-	@GetMapping("{id}/store")
+	@GetMapping("/getFiltered")
 	public
 	Product getProductByFiltered(int page, int pageSize, int accountId, String search, int minPrice, int maxPrice, ProductCategory category) {
 		return null;
