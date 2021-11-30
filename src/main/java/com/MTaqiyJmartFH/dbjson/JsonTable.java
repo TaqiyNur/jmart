@@ -1,4 +1,4 @@
-package com.MTaqiyJmartFH;
+package com.MTaqiyJmartFH.dbjson;
 
 import java.io.*;
 import java.lang.reflect.Array;

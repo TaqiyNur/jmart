@@ -2,6 +2,8 @@ package com.MTaqiyJmartFH;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.MTaqiyJmartFH.dbjson.Serializable;
+
 public class Complaint extends Serializable
 {
    public Date date;

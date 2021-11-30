@@ -1,5 +1,6 @@
 package com.MTaqiyJmartFH;
 
+import com.MTaqiyJmartFH.dbjson.Serializable;
 
 /**
  * 

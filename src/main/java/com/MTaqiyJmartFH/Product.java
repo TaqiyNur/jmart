@@ -1,5 +1,6 @@
 package com.MTaqiyJmartFH;
 
+import com.MTaqiyJmartFH.dbjson.Serializable;
 
 /**
  * Write a description of class Product here.

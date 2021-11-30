@@ -11,9 +11,6 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 
-import com.MTaqiyJmartFH.JsonTable;
-import com.MTaqiyJmartFH.Serializable;
-
 
 /** 
  * Handle load and store for {@link JsonTable}

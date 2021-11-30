@@ -2,32 +2,27 @@ package com.MTaqiyJmartFH.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.*;
-
 import com.MTaqiyJmartFH.Algorithm;
-import com.MTaqiyJmartFH.Serializable;
-import com.MTaqiyJmartFH.JsonTable;
+import com.MTaqiyJmartFH.dbjson.JsonTable;
+import com.MTaqiyJmartFH.dbjson.Serializable;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping()
-public interface BasicGetController<T extends Serializable>{
-	public abstract JsonTable<T> getJsonTable();
-	
-	@GetMapping("/page")
-	public default
-	List<T> getPage(@RequestParam int page, int pageSize) {
-		return null;
-		//return Algorithm.paginate<T>(getJsonTable(), page, pageSize, object -> true));
-	}
-	
-	@GetMapping("/{id}")
-	public default
-	T getById(@RequestParam int id) {
-		for(T object : getJsonTable()) {
-			if (object.id == id) {
-				return object;
-			}
-		}
-		return null;
-	}
+public interface BasicGetController<T extends Serializable> {
+    @GetMapping("/{id}")
+    public default T getById(@PathVariable int id) {
+        return Algorithm.<T>find(getJsonTable(), e -> e.id == id);
+    }
+
+    public abstract JsonTable<T> getJsonTable();
+
+    @GetMapping("/page")
+    public default List<T> getPage(int page, int pageSize) {
+        final JsonTable<T> table = getJsonTable();
+        return Algorithm.paginate(table, page, pageSize, o -> true);
+    }
+
 }
