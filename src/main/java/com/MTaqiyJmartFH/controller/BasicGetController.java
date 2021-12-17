@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Kelas acuan untuk akses database
+ * 
+ * @author mtaqi
+ *
+ */
 @RestController
 public interface BasicGetController<T extends Serializable> {
     @GetMapping("/{id}")

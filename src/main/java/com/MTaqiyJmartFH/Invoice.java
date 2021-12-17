@@ -7,17 +7,24 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- * Write a description of class Invoice here.
+ * Kelas untuk mendeskripsikan objek tagihan pengguna
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author mtaqi
  */
 public abstract class Invoice extends Serializable 
 {
+	/**
+	 * enumeration Rating untuk mendeskripsikan penilaian
+	 *
+	 */
     public static enum Rating {
         NONE, BAD, NEUTRAL, GOOD
     }
     
+    /**
+     * enumeration Status untuk menggambarkan status pesanan pengguna
+     *
+     */
     public static enum Status
     {
         WAITING_CONFIRMATION,
@@ -41,8 +48,12 @@ public abstract class Invoice extends Serializable
     public int complaintId;
     public Rating rating;
     public Status status;
-    public ArrayList<Record> history = new ArrayList<>();
     
+    /**
+     * constructor untuk objek pada kelas Invoice
+     * @param buyerId
+     * @param productId
+     */
     protected Invoice(int buyerId, int productId) {
         this.buyerId = buyerId;
         this.productId = productId;

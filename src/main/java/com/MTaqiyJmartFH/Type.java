@@ -4,8 +4,8 @@ package com.MTaqiyJmartFH;
 /**
  * Enumeration class Type
  *
- * @author  Muhammad Taqiy Nur Furqon
- * @NPM     2006468900
+ * @author  mtaqi
+ * 
  */
 public enum Type
 {

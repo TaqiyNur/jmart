@@ -3,6 +3,11 @@ package com.MTaqiyJmartFH;
 import java.util.Vector;
 import java.util.function.Function;
 
+/**
+ * Kelas untuk multithreading
+ * 
+ * @author mtaqi
+ */
 public class ObjectPoolThread<T> extends Thread {
 	private boolean exitSignal;
 	private Vector<T> objectPool;

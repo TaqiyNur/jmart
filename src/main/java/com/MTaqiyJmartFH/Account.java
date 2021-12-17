@@ -6,7 +6,8 @@ import com.MTaqiyJmartFH.dbjson.Serializable;
 import java.util.regex.Matcher;
 
 /**
- * Kelas ini mendeskripsikan Akun pengguna
+ * Kelas untuk mendeskripsikan Akun pengguna
+ * @author mtaqi
  *
  */
 public class Account extends Serializable
@@ -19,6 +20,13 @@ public class Account extends Serializable
     public Store store;
     public double balance;
     
+    /**
+     * Constructor untuk objek class Account
+     * @param name
+     * @param email
+     * @param password
+     * @param balance
+     */
     public Account(String name, String email, String password, double balance){
         this.name  = name;
         this.email = email;
@@ -26,6 +34,10 @@ public class Account extends Serializable
         this.balance = balance;
     }
     
+    /**
+     * Method untuk memastikan email dan password sesuai ketentuan
+     * @return kesesuaian email dan password dengan ketentuan
+     */
     public boolean validate() {
     	Pattern patternEmail = Pattern.compile(REGEX_EMAIL);
         Matcher matcherEmail = patternEmail.matcher(email);

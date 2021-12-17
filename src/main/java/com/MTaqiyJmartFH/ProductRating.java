@@ -2,10 +2,10 @@ package com.MTaqiyJmartFH;
 
 
 /**
- * Write a description of class ProductRating here.
+ * Deskripsi penilaian produk
  *
- * @author  Muhammad Taqiy Nur Furqon
- * @NPM     2006468900
+ * @author  mtaqi
+ * 
  */
 public class ProductRating
 {

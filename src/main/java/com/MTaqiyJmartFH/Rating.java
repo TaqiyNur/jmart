@@ -2,10 +2,10 @@ package com.MTaqiyJmartFH;
 
 
 /**
- * Enumeration class Rating - write a description of the enum class here
+ * Enumeration class Rating 
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author mtaqi
+ * 
  */
 public enum Rating
 {

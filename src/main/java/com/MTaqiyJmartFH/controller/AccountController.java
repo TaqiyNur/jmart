@@ -13,6 +13,12 @@ import java.util.regex.Pattern;
 
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Database kontrol untuk Akun pengguna
+ * 
+ * @author mtaqi
+ *
+ */
 @RestController
 @RequestMapping("/account")
 public class AccountController implements BasicGetController<Account>{
@@ -22,7 +28,23 @@ public class AccountController implements BasicGetController<Account>{
     public static final Pattern REGEX_PATTERN_PASSWORD = Pattern.compile(REGEX_PASSWORD);
     @JsonAutowired(value = Account.class,filepath = "accountList.json")
     public static JsonTable<Account> accountTable;
+    
+    @Override
+    public JsonTable getJsonTable() {
+        return accountTable;
+    }
+    
+    @Override
+    @GetMapping("/{id}")
+    public Account getById(@PathVariable int id) {
+        return BasicGetController.super.getById(id);
+    }
 
+    @Override
+    public List getPage(int page, int pageSize) {
+        return BasicGetController.super.getPage(page, pageSize);
+    }
+    
     @PostMapping("/login")
     Account login
             (
@@ -101,7 +123,7 @@ public class AccountController implements BasicGetController<Account>{
     }
 
     @PostMapping("/{id}/topUp")
-    boolean topUp
+    Boolean topUp
             (
                     @RequestParam int id,
                     @RequestParam double balance
@@ -114,21 +136,5 @@ public class AccountController implements BasicGetController<Account>{
             }
         }
         return false;
-    }
-
-    @Override
-    @GetMapping("/{id}")
-    public Account getById(@PathVariable int id) {
-        return BasicGetController.super.getById(id);
-    }
-
-    @Override
-    public JsonTable getJsonTable() {
-        return accountTable;
-    }
-
-    @Override
-    public List getPage(int page, int pageSize) {
-        return BasicGetController.super.getPage(page, pageSize);
     }
 }

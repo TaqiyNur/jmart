@@ -2,6 +2,12 @@ package com.MTaqiyJmartFH.dbjson;
 
 import java.util.HashMap;
 
+/**
+ * Class Serializable
+ * 
+ * @author mtaqi
+ *
+ */
 public class Serializable implements Comparable<Serializable> {
     private static HashMap<Class<?>, Integer> mapCounter = new HashMap<>();
     public final int id;

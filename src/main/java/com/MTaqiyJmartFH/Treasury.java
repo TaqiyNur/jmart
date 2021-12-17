@@ -4,8 +4,8 @@ package com.MTaqiyJmartFH;
 /**
  * 
  *
- * @author  Muhammad Taqiy Nur Furqon
- * @NPM     20064698900
+ * @author  mtaqi
+ * 
  */
 public class Treasury
 {

@@ -3,18 +3,22 @@ package com.MTaqiyJmartFH;
 import com.MTaqiyJmartFH.dbjson.Serializable;
 
 /**
- * 
+ * Kelas untuk mendeskripsikan objek kupon
+ * @author mtaqi
  *
- * @author  Muhammad Taqiy Nur Furqon
- * @NPM     2006468900
  */
 public class Coupon extends Serializable
 {
+	/**
+	 * enumeration Type sebagai tipe dari potongan harga
+	 * @author mtaqi
+	 *
+	 */
 	public enum Type {
         DISCOUNT, REBATE
     }
 	
-    // instance variables - replace the example below with your own
+    
     public final String name;
     public final int code;
     public final double cut;
@@ -23,7 +27,12 @@ public class Coupon extends Serializable
     private boolean used;
 
     /**
-     * Constructor for objects of class Coupon
+     * Constructor untuk objek class Coupon
+     * @param name
+     * @param code
+     * @param type
+     * @param cut
+     * @param minimum
      */
     public Coupon(String name, int code, Type type, double cut, double minimum) {
         this.name = name;
@@ -33,11 +42,21 @@ public class Coupon extends Serializable
         this.minimum = minimum;
         used = false;
     }
-
+    
+    /**
+     * Method untuk mengetahui kupon telah digunakan
+     * @return Kondisi kupon telah digunakan
+     */
     public boolean isUsed() {
         return used;
     }
     
+    /**
+     * Method untuk mengetahui kondisi penggunaan kupon
+     * @param price
+     * @param discount
+     * @return Kondisi kupon bisa digunakan atau tidak
+     */
     public boolean canApply(double price, double discount) {
         if ((Treasury.getAdjustedPrice(price, discount) > minimum) && !used) {
             return true;
@@ -46,6 +65,12 @@ public class Coupon extends Serializable
         return false;
     }
     
+    /**
+     * Method untuk menggunakan kupon terhadap harga
+     * @param price
+     * @param discount
+     * @return Harga yang telah diterapkan kupon
+     */
     public double apply(double price, double discount) {
         used = true;
         if(type == Type.DISCOUNT) {

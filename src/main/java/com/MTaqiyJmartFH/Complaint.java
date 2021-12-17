@@ -4,6 +4,11 @@ import java.util.Date;
 
 import com.MTaqiyJmartFH.dbjson.Serializable;
 
+/**
+ * Kelas untuk mendeskripsikan keluhan pengguna
+ * @author mtaqi
+ *
+ */
 public class Complaint extends Serializable
 {
    public Date date;

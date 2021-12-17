@@ -7,6 +7,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Comparator;
 
+/**
+ * Kelas berisi method algoritma pemrograman
+ * @author mtaqi
+ *
+ */
 public class Algorithm {
     private Algorithm() {
 

@@ -4,8 +4,8 @@ package com.MTaqiyJmartFH;
 /**
  * Enumeration class ProductCategory
  *
- * @author (Muhammad Taqiy Nur Furqon)
- * @NPM (200646900)
+ * @author mtaqi
+ * 
  */
 public enum ProductCategory
 {

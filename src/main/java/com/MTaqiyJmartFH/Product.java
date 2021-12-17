@@ -3,10 +3,10 @@ package com.MTaqiyJmartFH;
 import com.MTaqiyJmartFH.dbjson.Serializable;
 
 /**
- * Write a description of class Product here.
+ * Mendeskripsikan objek Produk
  *
- * @author  Muhammad Taqiy Nur Furqon
- * @NPM     2006468900
+ * @author  mtaqi
+ *
  */
 public class Product extends Serializable
 {

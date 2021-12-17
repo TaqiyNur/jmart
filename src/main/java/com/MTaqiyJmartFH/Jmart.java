@@ -8,9 +8,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Jmart Class
+ * Kelas utama Jmart
  *
- * @author Muhammad Taqiy Nur Furqon
+ * @author mtaqi
  */
 @SpringBootApplication
 public class Jmart {

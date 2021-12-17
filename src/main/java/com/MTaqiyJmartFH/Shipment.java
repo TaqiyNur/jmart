@@ -3,6 +3,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
+/**
+ * Mendeskripsikan objek pengiriman produk ke pengguna
+ * 
+ * @author mtaqi
+ *
+ */
 public class Shipment
 {
 	public static final SimpleDateFormat ESTIMATION_FORMAT = new SimpleDateFormat("E MMMMM dd yyyy");
@@ -13,7 +19,7 @@ public class Shipment
     public static final Plan KARGO = new Plan((byte)(1 << 4));
     public byte plan;
     public String address;
-    public int Cost;
+    public int cost;
     public String receipt;
     
     public static class Plan{
@@ -25,13 +31,26 @@ public class Shipment
         }
     }
     
-    public Shipment(String address, int Cost, byte plan, String receipt) {
+    /**
+     * Constructor untuk objek kelas Shipment
+     * 
+     * @param address
+     * @param cost
+     * @param plan
+     * @param receipt
+     */
+    public Shipment(String address, int cost, byte plan, String receipt) {
         this.address= address;
-        this.Cost = Cost;
+        this.cost = cost; 
         this.plan = plan;
         this.receipt = receipt;
     }
-
+    
+    /**
+     * Method untuk menghitung perkiraan tanggal produk tiba ke pengguna
+     * 
+     * @return perkiraan tanggal produk diterima oleh pengguna
+     */
     public String getEstimatedArrival (Date reference) {
         Calendar cal = Calendar.getInstance();
         

@@ -11,6 +11,12 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Database control untuk product
+ * 
+ * @author mtaqi
+ *
+ */
 @RestController
 @RequestMapping("/product")
 public class ProductController implements BasicGetController<Product>{
@@ -23,20 +29,26 @@ public class ProductController implements BasicGetController<Product>{
 	}
 	
 	@PostMapping("/create")
-	public
-	Product create(
-			@RequestParam int accountId, 
-			@RequestParam String name, 
-			@RequestParam int weight, 
-			@RequestParam boolean conditionUsed, 
-			@RequestParam double price, 
-			@RequestParam double discount, 
-			@RequestParam ProductCategory category, 
-			@RequestParam byte shipmentPlans
-			) 
-	{
-		return null;
-	}
+    @ResponseBody
+    Product create(
+    		@RequestParam int accountId, 
+    		@RequestParam String name, 
+    		@RequestParam int weight,
+            @RequestParam boolean conditionUsed, 
+            @RequestParam double price, 
+            @RequestParam double discount,
+            @RequestParam ProductCategory category, 
+            @RequestParam byte shipmentPlans) {
+        for (Product each : productTable) {
+            if (each.accountId == accountId) {
+                Product product = new Product(accountId, name, weight, conditionUsed, price, discount, category,
+                        shipmentPlans);
+                productTable.add(product);
+                return product;
+            }
+        }
+        return null;
+    }
 	
 	@GetMapping("/{id}/store")
     public List<Product> getProductByStore ( 

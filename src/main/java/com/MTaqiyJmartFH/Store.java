@@ -2,6 +2,12 @@ package com.MTaqiyJmartFH;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Deskripsi objek Store
+ * 
+ * @author mtaqi
+ *
+ */
 public class Store
 {
     public static final String REGEX_PHONE = "^([0-9]){9,12}$";
@@ -11,6 +17,14 @@ public class Store
     public String phoneNumber;
     public double balance;
     
+    /**
+     * Constructor untuk objek pada kelas Store
+     * 
+     * @param name
+     * @param address
+     * @param phoneNumber
+     * @param balance
+     */
     public Store(String name, String address, String phoneNumber, double balance) {
         this.name = name;
         this.address = address;
