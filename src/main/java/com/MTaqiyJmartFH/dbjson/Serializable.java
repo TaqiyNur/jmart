@@ -6,12 +6,17 @@ import java.util.HashMap;
  * Class Serializable
  * 
  * @author mtaqi
+ * @version 1.0
+ * @since 17 Desember 2021
  *
  */
 public class Serializable implements Comparable<Serializable> {
     private static HashMap<Class<?>, Integer> mapCounter = new HashMap<>();
     public final int id;
-
+    
+    /**
+     * 
+     */
     protected Serializable() {
         Integer counter = mapCounter.get(getClass());
         counter = counter == null ? 0 : counter + 1;

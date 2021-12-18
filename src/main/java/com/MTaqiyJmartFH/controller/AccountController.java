@@ -14,10 +14,11 @@ import java.util.regex.Pattern;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Database kontrol untuk Akun pengguna
+ * Data kontrol untuk Akun pengguna
  * 
  * @author mtaqi
- *
+ * @version 1.0
+ * @since 17 Desember 2021
  */
 @RestController
 @RequestMapping("/account")
@@ -29,22 +30,46 @@ public class AccountController implements BasicGetController<Account>{
     @JsonAutowired(value = Account.class,filepath = "accountList.json")
     public static JsonTable<Account> accountTable;
     
+    /**
+     * mengambil data akun
+     * 
+     * @return accounTable	data akun pengguna
+     */
     @Override
     public JsonTable getJsonTable() {
         return accountTable;
     }
     
+    
+    /**
+     * mengambil data pengguna melalui id
+     * 
+     * @return data pengguna sesuai id
+     */
     @Override
     @GetMapping("/{id}")
     public Account getById(@PathVariable int id) {
         return BasicGetController.super.getById(id);
     }
-
+    
+    
+    /**
+     * menampilkan halaman
+     * 
+     * @return halaman
+     */
     @Override
     public List getPage(int page, int pageSize) {
         return BasicGetController.super.getPage(page, pageSize);
     }
     
+    /**
+     * controller untuk login
+     * 
+     * @param email			nama email ppengguna
+     * @param password		password pengguna
+     * @return	data pengguna jika login berhail, null jika tidak
+     */
     @PostMapping("/login")
     Account login
             (
@@ -72,7 +97,15 @@ public class AccountController implements BasicGetController<Account>{
         }
         return null;
     }
-
+    
+    /**
+     * controller untuk pendaftaran akun 
+     * 
+     * @param name			nama pengguna
+     * @param email			nama email pengguna
+     * @param password		password akun pengguna
+     * @return				objek account
+     */
     @PostMapping("/register")
     Account register
             (
@@ -103,7 +136,16 @@ public class AccountController implements BasicGetController<Account>{
         }
         return null;
     }
-
+    
+    /**
+     * controller untuk pendaftaran store pengguna
+     * 
+     * @param id			id pengguna
+     * @param name			nama pengguna
+     * @param address		alamat store pengguna
+     * @param phoneNumber	nomor telepon pengguna
+     * @return				data store
+     */
     @PostMapping("/{id}/registerStore")
     Store register
             (
@@ -121,7 +163,14 @@ public class AccountController implements BasicGetController<Account>{
         }
         return null;
     }
-
+    
+    /**
+     *  controller untuk top up pengisian saldo pengguna
+     * 
+     * @param id		id pengguna
+     * @param balance	saldo pengguna
+     * @return			kondisi true jika top up berhasil
+     */
     @PostMapping("/{id}/topUp")
     Boolean topUp
             (
